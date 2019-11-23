@@ -1,9 +1,9 @@
 <template>
   <div class="filter">
-    <div class="fitler__title">
+    <div class="filter__title">
       Cuisines
     </div>
-    <div class="fitler__content">
+    <div class="filter__content filter__content--4">
       <div class="filter__item" v-for="item in shortList" :key="item.cuisine.cuisine_id">
         <label>
           <input
@@ -36,7 +36,7 @@
     },
     computed: {
       shortList() {
-        return this.items.slice(0, 13)
+        return this.items.slice(0, 12)
       }
     },
     watch: {

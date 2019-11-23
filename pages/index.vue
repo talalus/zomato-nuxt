@@ -1,8 +1,8 @@
 <template>
   <div class="grid">
     <div class="grid__row">
-      <categories :items="categories"/>
-      <cuisines :items="cuisines"/>
+      <categories class="grid__col grid__col--2" :items="categories"/>
+      <cuisines class="grid__col grid__col--6" :items="cuisines"/>
     </div>
     <div class="grid__row grid__row--dark">
       <restaurants class="grid__col grid__col--4" :restaurants="restaurants"/>
@@ -53,7 +53,3 @@
     }
   }
 </script>
-
-<style lang="scss">
-
-</style>

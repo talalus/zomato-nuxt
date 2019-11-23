@@ -1,0 +1,22 @@
+.filter {
+  &__title {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  &__content {
+    &--4 {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  &__item {
+    flex: 0 0 auto;
+
+    .filter__content--4 & {
+      @include mq(tablet) {
+        flex-basis: 33.33333333%;
+        max-width: 33.33333333%;
+      }
+    }
+  }
+}

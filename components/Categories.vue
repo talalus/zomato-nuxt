@@ -1,9 +1,9 @@
 <template>
   <div class="filter">
-    <div class="fitler__title">
+    <div class="filter__title">
       Category
     </div>
-    <div class="fitler__content">
+    <div class="filter__content">
       <div class="filter__item" v-for="item in shortedList" :key="item.categories.id">
         <label>
           <input

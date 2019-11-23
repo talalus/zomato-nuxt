@@ -16,10 +16,24 @@
     flex-basis: 100%;
     max-width: 100%;
 
+    &--2 {
+      @include mq(tablet) {
+        flex-basis: 16.6666666667%;
+        max-width: 16.6666666667%;
+      }
+    }
+
     &--4 {
       @include mq(tablet) {
         flex-basis: 33.33333333%;
         max-width: 33.33333333%;
+      }
+    }
+
+    &--6 {
+      @include mq(tablet) {
+        flex-basis: 50%;
+        max-width: 50%;
       }
     }
 
