@@ -20,9 +20,11 @@ const state = () => {
 
 const mutations = {
   appendRestaurants(state, payload) {
-    state.restaurants.push(payload)
+    state.currentPage++
+    state.restaurants.push(...payload)
   },
-  updateRestaurants(state, payload) {
+  setRestaurants(state, payload) {
+    state.currentPage = 1
     state.restaurants = payload
   },
   setCuisines(state, payload) {
@@ -36,15 +38,19 @@ const mutations = {
   }
 }
 const actions = {
-  async search({ commit, state }) {
+  async search({ commit, state }, loadMore) {
     const { data } = await this.$axios.get('search', {
       params: {
-        start: state.currentPage,
+        start: state.currentPage * state.pageSize,
         count: state.pageSize,
         ...state.filter
       }
     })
-    commit('updateRestaurants', data.restaurants)
+    if (loadMore) {
+      commit('appendRestaurants', data.restaurants)
+    } else {
+      commit('setRestaurants', data.restaurants)
+    }
   },
   async getCategories({ commit }) {
     const { data } = await this.$axios.get('categories')
