@@ -4,13 +4,13 @@ const state = () => {
   return {
     currentCity: 297,
     currentPage: 0,
-    pageSize: 10,
+    pageSize: 20,
     currentRestaurant: null,
     restaurants: [],
     cuisines: [],
     categories: [],
     filter: {
-      categories: null,
+      category: null,
       cuisines: null,
       sort: 'rating',
       order: 'desc'
@@ -20,12 +20,13 @@ const state = () => {
 
 const mutations = {
   appendRestaurants(state, payload) {
-    state.currentPage++
     state.restaurants.push(...payload)
   },
   setRestaurants(state, payload) {
-    state.currentPage = 1
     state.restaurants = payload
+  },
+  setCurrentPage(state, payload) {
+    state.currentPage = payload
   },
   setCuisines(state, payload) {
     state.cuisines = payload
@@ -35,10 +36,14 @@ const mutations = {
   },
   setCurrentResturant(state, payload) {
     state.currentRestaurant = payload
+  },
+  setFilter(state, payload) {
+    state.filter = { ...state.filter, ...payload }
   }
 }
 const actions = {
   async search({ commit, state }, loadMore) {
+    commit('setCurrentPage', loadMore ? state.currentPage + 1 : 0)
     const { data } = await this.$axios.get('search', {
       params: {
         start: state.currentPage * state.pageSize,

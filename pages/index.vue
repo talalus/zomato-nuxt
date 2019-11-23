@@ -1,8 +1,8 @@
 <template>
   <div class="grid">
     <div class="grid__row">
-      <!--<categories :categories="categories"/>-->
-      <!--<categories :categories="cuisines"/>-->
+      <categories :items="categories"/>
+      <cuisines :items="cuisines"/>
     </div>
     <div class="grid__row grid__row--dark">
       <restaurants class="grid__col grid__col--4" :restaurants="restaurants"/>
@@ -15,11 +15,13 @@
 
 <script>
   import Categories from '~/components/Categories'
+  import Cuisines from '~/components/Cuisines'
   import Restaurants from '~/components/Restaurants'
 
   export default {
     components: {
       Categories,
+      Cuisines,
       Restaurants
     },
     computed: {

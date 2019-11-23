@@ -1,19 +1,19 @@
 <template>
   <div class="filter">
     <div class="fitler__title">
-      Category
+      Cuisines
     </div>
     <div class="fitler__content">
-      <div class="filter__item" v-for="item in shortedList" :key="item.categories.id">
+      <div class="filter__item" v-for="item in shortList" :key="item.cuisine.cuisine_id">
         <label>
           <input
             type="checkbox"
             name="filter"
             v-model="selected"
-            :value="item.categories.id"
+            :value="item.cuisine.cuisine_id"
             :disabled="isLoading"
           >
-          {{item.categories.name}}
+          {{item.cuisine.cuisine_name}}
         </label>
       </div>
     </div>
@@ -35,14 +35,14 @@
       }
     },
     computed: {
-      shortedList() {
-        return this.items.slice(0, 4)
+      shortList() {
+        return this.items.slice(0, 13)
       }
     },
     watch: {
       selected: async function(value) {
         this.isLoading = true
-        this.$store.commit('setFilter', { category: value.join(',') })
+        this.$store.commit('setFilter', { cuisines: value.join(',') })
         try {
           await this.$store.dispatch('search')
         } catch (e) {
