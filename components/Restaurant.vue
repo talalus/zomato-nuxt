@@ -2,8 +2,16 @@
   <div>
     <div class="restaurant">
       <div class="restaurant__image">
-        <img v-if="restaurant.featured_image" :src="restaurant.featured_image" :alt="restaurant.name">
-        <img v-else src="https://via.placeholder.com/500" :alt="restaurant.name">
+        <img
+          v-if="restaurant.featured_image"
+          :src="restaurant.featured_image"
+          :alt="restaurant.name"
+        />
+        <img
+          v-else
+          :alt="restaurant.name"
+          src="https://via.placeholder.com/500"
+        />
       </div>
       <div class="restaurant__details">
         <h1 class="restaurant__name">
@@ -16,24 +24,36 @@
           <div class="restaurant__option">
             <span
               :class="[
-              'restaurant__option-status',
-              restaurant.has_table_booking ? 'restaurant__option-status--green': 'restaurant__option-status--red'
+                'restaurant__option-status',
+                restaurant.has_table_booking
+                  ? 'restaurant__option-status--green'
+                  : 'restaurant__option-status--red'
               ]"
             >
             </span>
-            <span class="restaurant__option-detail" v-if="restaurant.has_table_booking">Bookings available</span>
-            <span class="restaurant__option-detail" v-else>No bookings</span>
+            <span
+              v-if="restaurant.has_table_booking"
+              class="restaurant__option-detail"
+              >Bookings available</span
+            >
+            <span v-else class="restaurant__option-detail">No bookings</span>
           </div>
           <div class="restaurant__option">
             <span
               :class="[
-              'restaurant__option-status',
-              restaurant.has_online_delivery ? 'restaurant__option-status--green': 'restaurant__option-status--red'
+                'restaurant__option-status',
+                restaurant.has_online_delivery
+                  ? 'restaurant__option-status--green'
+                  : 'restaurant__option-status--red'
               ]"
             >
             </span>
-            <span class="restaurant__option-detail" v-if="restaurant.has_online_delivery">Delivery available</span>
-            <span class="restaurant__option-detail" v-else>No delivery</span>
+            <span
+              v-if="restaurant.has_online_delivery"
+              class="restaurant__option-detail"
+              >Delivery available</span
+            >
+            <span v-else class="restaurant__option-detail">No delivery</span>
           </div>
         </div>
         <div class="restaurant__attribute">
@@ -47,7 +67,7 @@
             Phone numbers
           </div>
           <div class="restaurant__attribute-value">
-            {{ restaurant.phone_numbers}}
+            {{ restaurant.phone_numbers }}
           </div>
         </div>
         <div class="restaurant__attribute">
@@ -65,13 +85,12 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      restaurant: {
-        type: Object,
-        required: true
-      }
+export default {
+  props: {
+    restaurant: {
+      type: Object,
+      required: true
     }
   }
+}
 </script>
-
