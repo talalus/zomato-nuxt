@@ -1,0 +1,14 @@
+.restaurant {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  &__details,
+  &__image {
+    @include mq(tablet) {
+      flex-basis: 50%;
+      max-width: 50%;
+    }
+  }
+}

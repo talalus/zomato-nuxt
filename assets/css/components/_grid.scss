@@ -1,0 +1,33 @@
+.grid {
+  &__row {
+    background-color: $color-white;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &--dark {
+      background-color: $color-gray--lighter;
+    }
+  }
+
+  &__col {
+    flex: 0 0 auto;
+    flex-basis: 100%;
+    max-width: 100%;
+
+    &--4 {
+      @include mq(tablet) {
+        flex-basis: 33.33333333%;
+        max-width: 33.33333333%;
+      }
+    }
+
+    &--8 {
+      @include mq(tablet) {
+        flex-basis: 66.66666667%;
+        max-width: 66.66666667%;
+      }
+    }
+  }
+}
