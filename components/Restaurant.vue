@@ -2,7 +2,8 @@
   <div>
     <div class="restaurant">
       <div class="restaurant__image">
-        <img :src="restaurant.featured_image" :alt="restaurant.name">
+        <img v-if="restaurant.featured_image" :src="restaurant.featured_image" :alt="restaurant.name">
+        <img v-else src="https://via.placeholder.com/500" :alt="restaurant.name">
       </div>
       <div class="restaurant__details">
         <h1 class="restaurant__name">
