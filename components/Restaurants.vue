@@ -6,11 +6,6 @@
           {{ restaurant.name }}
         </nuxt-link>
       </li>
-      <li>
-        <nuxt-link to="1233445">
-          not found
-        </nuxt-link>
-      </li>
     </ul>
   </div>
 </template>
