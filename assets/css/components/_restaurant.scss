@@ -11,4 +11,29 @@
       max-width: 50%;
     }
   }
+
+  &__image {
+    display: flex;
+
+    img {
+      display: block;
+      margin: auto;
+    }
+
+    img[lazy=error],
+    img[lazy=loaded] {
+      animation-duration: 1s;
+      animation-fill-mode: both;
+      animation-name: fadeIn;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

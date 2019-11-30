@@ -2,16 +2,9 @@
   <div>
     <div class="restaurant">
       <div class="restaurant__image">
-        <img
-          v-if="restaurant.featured_image"
-          :src="restaurant.featured_image"
-          :alt="restaurant.name"
-        />
-        <img
-          v-else
-          :alt="restaurant.name"
-          src="https://via.placeholder.com/500"
-        />
+        <transition name="fade">
+          <img v-lazy="restaurant.featured_image" :alt="restaurant.name" />
+        </transition>
       </div>
       <div class="restaurant__details">
         <h1 class="restaurant__name">
@@ -34,8 +27,9 @@
             <span
               v-if="restaurant.has_table_booking"
               class="restaurant__option-detail"
-              >Bookings available</span
             >
+              Bookings available
+            </span>
             <span v-else class="restaurant__option-detail">No bookings</span>
           </div>
           <div class="restaurant__option">
@@ -51,8 +45,8 @@
             <span
               v-if="restaurant.has_online_delivery"
               class="restaurant__option-detail"
-              >Delivery available</span
-            >
+              >Delivery available
+            </span>
             <span v-else class="restaurant__option-detail">No delivery</span>
           </div>
         </div>
