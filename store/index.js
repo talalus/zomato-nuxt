@@ -13,6 +13,7 @@ const state = () => {
       category: null,
       cuisines: null,
       priceRange: [1, 4],
+      ratingRange: [0, 5],
       sort: null,
       order: null
     }
@@ -52,16 +53,17 @@ const actions = {
         ...state.filter
       }
     })
-    // filter by price range in frontend due to API limitation
+    // filter by price range and rating in frontend due to API limitation
     let restaurants = data.restaurants
-    if (state.filter.priceRange) {
-      restaurants = restaurants.filter(({ restaurant }) => {
-        return (
-          restaurant.price_range >= state.filter.priceRange[0] &&
-          restaurant.price_range <= state.filter.priceRange[1]
-        )
-      })
-    }
+    restaurants = restaurants.filter(({ restaurant }) => {
+      return (
+        restaurant.price_range >= state.filter.priceRange[0] &&
+        restaurant.price_range <= state.filter.priceRange[1] &&
+        restaurant.user_rating.aggregate_rating >=
+          state.filter.ratingRange[0] &&
+        restaurant.user_rating.aggregate_rating <= state.filter.ratingRange[1]
+      )
+    })
     if (loadMore) {
       commit('appendRestaurants', restaurants)
     } else {
