@@ -10,7 +10,7 @@
         <h1 class="restaurant__name">
           {{ restaurant.name }}
         </h1>
-        <div class="restaurant__address">
+        <div v-if="restaurant.location" class="restaurant__address">
           {{ restaurant.location.address }}
         </div>
         <div class="restaurant__options">

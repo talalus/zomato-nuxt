@@ -12,8 +12,9 @@ const state = () => {
     filter: {
       category: null,
       cuisines: null,
-      sort: 'rating',
-      order: 'desc'
+      priceRange: [1, 4],
+      sort: null,
+      order: null
     }
   }
 }
@@ -51,10 +52,23 @@ const actions = {
         ...state.filter
       }
     })
+    // filter by price range in frontend due to API limitation
+    let restaurants = data.restaurants
+    if (state.filter.priceRange) {
+      restaurants = restaurants.filter(({ restaurant }) => {
+        return (
+          restaurant.price_range >= state.filter.priceRange[0] &&
+          restaurant.price_range <= state.filter.priceRange[1]
+        )
+      })
+    }
     if (loadMore) {
-      commit('appendRestaurants', data.restaurants)
+      commit('appendRestaurants', restaurants)
     } else {
-      commit('setRestaurants', data.restaurants)
+      commit('setRestaurants', restaurants)
+      if (restaurants.length === 0) {
+        commit('setCurrentResturant', null)
+      }
     }
   },
   async getCategories({ commit }) {

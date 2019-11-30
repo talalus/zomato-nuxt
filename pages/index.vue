@@ -3,6 +3,7 @@
     <div class="grid__row">
       <categories :items="categories" class="grid__col grid__col--2" />
       <cuisines :items="cuisines" class="grid__col grid__col--6" />
+      <price-range />
     </div>
     <div class="grid__row grid__row--dark">
       <restaurants :restaurants="restaurants" class="grid__col grid__col--4" />
@@ -17,12 +18,14 @@
 import Categories from '~/components/Categories'
 import Cuisines from '~/components/Cuisines'
 import Restaurants from '~/components/Restaurants'
+import PriceRange from '~/components/PriceRange'
 
 export default {
   components: {
     Categories,
     Cuisines,
-    Restaurants
+    Restaurants,
+    PriceRange
   },
   computed: {
     categories() {
