@@ -6,6 +6,7 @@ const state = () => {
     currentPage: 0,
     pageSize: 20,
     currentRestaurant: null,
+    isPagerDisabled: false,
     restaurants: [],
     cuisines: [],
     categories: [],
@@ -41,11 +42,17 @@ const mutations = {
   },
   setFilter(state, payload) {
     state.filter = { ...state.filter, ...payload }
+  },
+  disablePager(state, payload) {
+    state.isPagerDisabled = payload
   }
 }
 const actions = {
   async search({ commit, state }, loadMore) {
     commit('setCurrentPage', loadMore ? state.currentPage + 1 : 0)
+    if (state.isPagerDisabled) {
+      commit('disablePager', false)
+    }
     const { data } = await this.$axios.get('search', {
       params: {
         start: state.currentPage * state.pageSize,
@@ -71,6 +78,9 @@ const actions = {
       if (restaurants.length === 0) {
         commit('setCurrentResturant', null)
       }
+    }
+    if (data.results_shown < state.pageSize) {
+      commit('disablePager', true)
     }
   },
   async getCategories({ commit }) {

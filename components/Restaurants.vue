@@ -11,6 +11,7 @@
       @click="loadMore"
       :class="['button', isLoading && 'button--loading']"
       :disable="isLoading"
+      v-if="!isPagerDisabled"
     >
       Show more
     </button>
@@ -28,6 +29,11 @@ export default {
   data() {
     return {
       isLoading: false
+    }
+  },
+  computed: {
+    isPagerDisabled() {
+      return this.$store.state.isPagerDisabled
     }
   },
   methods: {
