@@ -1,4 +1,7 @@
 .grid {
+  display: flex;
+  flex-direction: column;
+
   &__row {
     background-color: $color-white;
     display: flex;
@@ -8,6 +11,7 @@
 
     &--dark {
       background-color: $color-gray--lighter;
+      overflow: auto;
     }
   }
 

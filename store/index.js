@@ -82,6 +82,7 @@ const actions = {
     if (data.results_shown < state.pageSize) {
       commit('disablePager', true)
     }
+    commit('setNumberOfResults', data.results_found)
   },
   async getCategories({ commit }) {
     const { data } = await this.$axios.get('categories')

@@ -1,0 +1,45 @@
+.list {
+  position: relative;
+
+  &__heading {
+    text-transform: uppercase;
+    padding: $indent-base $indent-s $indent-base $indent-m;
+    color: $color-black;
+    border-bottom: 1px solid darken($color-gray, 15%);
+  }
+
+  &__content {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    border-bottom: 1px solid darken($color-gray, 15%);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: $indent-s $indent-xs $indent-s $indent-m;
+    color: $color-black;
+    text-decoration: none;
+
+    &.nuxt-link-active {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+
+  &__submit {
+    @include mq(tablet) {
+      position: fixed;
+      width: $sidebar-width;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+}

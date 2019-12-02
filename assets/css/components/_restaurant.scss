@@ -4,16 +4,20 @@
   flex-direction: row;
   flex-wrap: wrap;
 
-  &__details,
-  &__image {
+  &__details {
     @include mq(tablet) {
       flex-basis: 50%;
       max-width: 50%;
+      padding-left: $indent-m;
     }
   }
 
   &__image {
     display: flex;
+    @include mq(tablet) {
+      flex-basis: 50%;
+      max-width: 50%;
+    }
 
     img {
       display: block;

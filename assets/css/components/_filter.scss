@@ -1,14 +1,18 @@
 .filter {
+  margin-bottom: $indent-base;
+
   &__title {
     text-transform: uppercase;
     font-weight: bold;
   }
+
   &__content {
     &--4 {
       display: flex;
       flex-wrap: wrap;
     }
   }
+
   &__item {
     flex: 0 0 auto;
 

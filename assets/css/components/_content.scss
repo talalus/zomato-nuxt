@@ -1,0 +1,39 @@
+.content {
+  &__top {
+    background-color: $color-white;
+    padding: $indent-m;
+
+    @include mq(tablet) {
+      position: fixed;
+      height: $filter-height;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+
+  &__side {
+    background-color: $color-gray;
+
+    @include mq(tablet) {
+      position: fixed;
+      top: $filter-height;
+      bottom: 0;
+      left: 0;
+      width: $sidebar-width;
+      max-width: 100%;
+      z-index: 1;
+      overflow: auto;
+      padding-bottom: 50px;
+    }
+  }
+
+  &__main {
+    background-color: $color-gray--lighter;
+    @include mq(tablet) {
+      padding: $indent-l $indent-l $indent-l $sidebar-width + $indent-l;
+      margin-top: $filter-height;
+    }
+  }
+}

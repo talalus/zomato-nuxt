@@ -1,20 +1,24 @@
 <template>
-  <div>
-    <div>{{ label }}</div>
-    <vue-slider
-      :value="value"
-      @change="$emit('input', $event)"
-      :min="min"
-      :max="max"
-      :processStyle="{ backgroundColor: '#50bebf' }"
-      :railStyle="{ backgroundColor: '#f1f1f1', height: '12px' }"
-      :dotStyle="{ border: '1px solid #50bebf' }"
-      :tooltipStyle="{ backgroundColor: '#50bebf', borderColor: '#50bebf' }"
-      :lazy="true"
-      :disabled="disabled"
-      tooltip="focus"
-      dot-size="20"
-    ></vue-slider>
+  <div class="filter">
+    <div class="filter__title">
+      {{ label }}
+    </div>
+    <div class="filter__content">
+      <vue-slider
+        :value="value"
+        @change="$emit('input', $event)"
+        :min="min"
+        :max="max"
+        :processStyle="{ backgroundColor: '#50bebf' }"
+        :railStyle="{ backgroundColor: '#f1f1f1', height: '12px' }"
+        :dotStyle="{ border: '1px solid #50bebf' }"
+        :tooltipStyle="{ backgroundColor: '#50bebf', borderColor: '#50bebf' }"
+        :lazy="true"
+        :disabled="disabled"
+        tooltip="focus"
+        dot-size="20"
+      ></vue-slider>
+    </div>
   </div>
 </template>
 
